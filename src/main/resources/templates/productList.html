@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista Produktów</title>
+</head>
+<body>
+    <h1>Lista produktów</h1>
+
+    <h2 th:if="${products.empty}">List produktów jest pusta</h2>
+    <ul>
+        <li th:each="product: ${products}">
+            <h2 th:text="${product.name}">Nazwa produktu</h2>
+            <h2 th:text="|${product.price}  zł| ">Cena produktu</h2>
+        </li>
+    </ul>
+
+    <h2 th:if="${sum > 0}" >Suma cen wszystkich produktów to : <bold th:text="|${sum} zł|"></bold> </h2>
+
+    <a href="/">Dodaj kolejny produkt</a><br/>
+    <a href="/tabela">Wyświetl tabelę produktów</a>
+</body>
+</html>

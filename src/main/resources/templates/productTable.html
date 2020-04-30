@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabela Produktów</title>
+</head>
+<body>
+<h1>Tabela produktów</h1>
+
+<h2 th:if="${products.empty}">Tabela produktów jest pusta</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nazwa produktu</th>
+            <th>Cena (zł)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="product, rowStat: ${products}"
+            th:style="${rowStat.odd} ? 'color: gray' : 'color: blue;'">
+            <td th:text="${product.name}">ogórek</td>
+            <td th:text="${product.price}">12</td>
+        </tr>
+    </tbody>
+</table>
+
+
+
+<h2 th:if="${sum > 0}" >Suma cen wszystkich produktów to : <bold th:text="|${sum} zł|"></bold> </h2>
+
+<a href="/">Dodaj kolejny produkt</a><br/>
+<a href="/lista">Wyświetl listę produktów</a>
+</body>
+</html>
